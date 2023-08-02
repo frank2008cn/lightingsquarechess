@@ -1,0 +1,95 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.navigation button {
+  display: none;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.header-section {
+  color: white;
+  height: 64px;
+  background-color: #333333;
+}
+
+.header-background {
+  height: 300px;
+  background: url(background.jpg);
+}
+
+.links {
+  float: right;
+  padding: 20px 10px;
+}
+
+.links a {
+  margin: 0 8px;
+  color: white;
+  text-decoration: none; 
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+.logo {
+  font-size: 20px;
+  padding: 0 10px;
+  line-height: 64px;
+  float: left;
+}
+
+.header {
+  font-size: 40px;
+  text-align: center;
+  padding-top: 40px;
+  clear:both;
+}
+
+.desp-section {
+  max-width: 970px;
+  margin: 0 auto;
+  padding: 20px 20px;
+}
+
+.desp-section h2 {
+  font-size: 32px;
+  border-bottom: 4px solid gray;
+}
+
+.desp-section p {
+  font-size: 16px;
+}
+
+.calendar {
+  width: 100%;
+}
+
+.calendar td {
+  text-align: center;
+}
+
+@media (max-width:640px) {
+  .navigation button {
+    display: block;
+  }
+  .links {
+    display:none;
+    position: absolute;
+    background: #f1f1f1;
+    right: 20px;
+    top: 50px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+  }
+  .links a {
+    display: block;
+    color: #000000;
+  }
+}

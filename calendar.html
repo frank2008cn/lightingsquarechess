@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" type="text/css" href="main.css" />   
+</head>
+<body>
+  <div class="header-section">
+    <div class="navigation">
+      <div class="logo">
+        <img></img>
+        <span>Lighting Square Chess</span>
+      </div>
+      <button onclick="toggleLinks()">
+        <img src="menu.svg"></img>
+      </button>
+      <div class="links" id="links">
+        <a>Home</a>
+        <a href="calendar.html">Play Chess!</a>
+        <a href="contact.html">Contact Us</a>
+      </div>     
+    </div>
+  </div>  
+  <div class="content-section">
+    <table class="table-auto calendar border-spacing-2 border-collapse border border-slate-400">
+      <thead id="content">
+        <tr>
+          <th class="border border-slate-300">Name</th>
+          <th class="border border-slate-300">Date</th>
+          <th class="border border-slate-300">Register</th>
+          <th class="border border-slate-300">Entries</th>
+        </tr>        
+      </thead>
+    </table>
+  </div>
+  <script src="main.js"></script>
+  <script>
+    createCalendar();
+  </script>
+</body>
