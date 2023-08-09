@@ -50,7 +50,7 @@ a {
 }
 
 .header-filter {
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0,0,0,.2);
   backdrop-filter: blur(10px);
   position: absolute;
   top: 0;
@@ -62,9 +62,13 @@ a {
 
 .header-background {
   height: 500px;
-  background: url(background.jpg) bottom;
+  background: url(background.jpg) #333 center no-repeat;
   background-size: cover;
   position: relative;
+}
+
+.content-section {
+  padding-bottom: 40px;
 }
 
 .content-section h2 {
@@ -83,10 +87,42 @@ a {
   float: right;
 }
 
-.links a {
+.sub-links {
+  display: inline-block;
+  position: relative;  
+  z-index:4;
+}
+
+.sub-links-menu {
+  position: absolute;
+  background: rgba(0, 0, 0, .6);
+  border-radius: 8px;
+  top: 64px;
+  left: 22px;
+  padding: 12px 18px;
+  line-height: 32px;
+  display: none;
+  
+}
+
+.sub-links:hover {
+  padding-bottom: 80px;
+}
+
+.sub-links:hover .sub-links-menu {
+  display: block;
+}
+
+.links a, .links span {
   margin-left: 40px;
   color: white;
   text-decoration: none; 
+  white-space: nowrap;
+}
+
+.sub-links-menu a {
+  margin-left: 0;
+ 
 }
 
 .links a:hover {
@@ -109,10 +145,13 @@ a {
   text-align: center;
   clear:both;
   position: relative;
-  z-index: 2;
-  line-height: 420px;
+  z-index: 1;
+  line-height: 60px;
   margin: 0;
   padding: 0;
+  position: absolute;
+  width: 100%;
+  top: 260px;
 }
 
 .calendar {
@@ -146,26 +185,46 @@ a {
     display:none;
     position: absolute;
     background: #f1f1f1;
-    right: 20px;
-    top: 50px;
+    right: 28px;
+    top: 70px;
     border-radius: 5px;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
     animation-name: slide;
     animation-duration: 0.3s;
-  }
-  .links a {
-    display: block;
-    color: #000000;
+    line-height: 32px;
+    padding: 20px;
+    z-index: 20;
   }
 
+  .links a, .links span {
+    display: block;
+    color: #000000;
+    margin: 0;
+  }
+
+  .sub-links {
+    margin: 0;
+  }
+
+  .sub-links-menu {
+    position: static;    
+    padding: 0 0 0 20px;
+    line-height: 24px;    
+    margin: 0;
+  }
+  
+  .sub-links:hover {
+    padding-bottom: 0;
+  }
+  
   .navigation h1 {
     padding-top: 50px;
     font-size: 24px;
   }
 
   .header h1 {
-    line-height: 240px;
     font-size: 24px;
+    top: 150px;
   }
   .header-background {
     height: 320px;
@@ -187,24 +246,40 @@ a {
 
 .table {
   width: 100%;
+  display: table;
 }
 
-.table p, a {
+.table p, .table a {
   font-size: 16px;
   color: black;
   padding: 4px 0;
+  margin: 0;
 }
 
 .table a {
   text-decoration: underline;
 }
 
+.section h3 {
+  margin-left: 12px;
+  padding-bottom: 16px;
+  border-bottom: 0.5px solid #cdcdcd;
+}
+
 .row {
-  display: flex;
+  display: table-row;
   margin: 16px -12px;
 }
 
 .cell {
   padding: 8px 12px;
-  flex-grow: 4;
+  display: table-cell;
+}
+
+.centered {
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold;
 }
