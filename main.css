@@ -62,7 +62,7 @@ a {
 
 .header-background {
   height: 500px;
-  background: url(background.jpg) #333 center no-repeat;
+  background: url(https://i.ibb.co/HYPJZt2/background.jpg) #333 center no-repeat;
   background-size: cover;
   position: relative;
 }
@@ -209,8 +209,10 @@ a {
   .sub-links-menu {
     position: static;    
     padding: 0 0 0 20px;
-    line-height: 24px;    
+    line-height: 32px;    
     margin: 0;
+    display: block;
+    background: none;
   }
   
   .sub-links:hover {
@@ -228,6 +230,18 @@ a {
   }
   .header-background {
     height: 320px;
+  }
+
+  .content-section h2 {
+    font-size: 32px;
+  }
+
+  .events {
+    overflow: auto;
+  }
+
+  #event {
+    margin: 0 -12px;
   }
 }
 
