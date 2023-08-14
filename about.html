@@ -1,82 +1,89 @@
 <!DOCTYPE html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="main.css" />   
-</head>
-<body>
-  <div class="header-section header-background" id="home">
-    <div class="header-filter"></div>
-    <div class="navigation">
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="main.css" />   
+  </head>
+  <body>
+    <div class="header-section header-background" id="home">
+      <div class="header-filter"></div>
+      <div class="navigation">
+        <div class="wrapper">
+          <div class="logo">
+            <a href="index.html">
+              <img></img>
+              <span></span>
+            </a>
+          </div>
+          <button onclick="toggleLinks()">
+            <img src="menu.svg"></img>
+          </button>
+          <div class="links" id="links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <div class="sub-links">
+              <span>Tournaments</span>
+              <div class="sub-links-menu">
+                <a href="community.html">Brainpower Community</a>
+                <a href="blitz.html">Brainpower Blitz</a>
+              </div>            
+            </div>
+            <a href="lesson.html">Classes</a>
+            <a href="contact.html">Contact Us</a>  
+          </div>
+        </div>      
+      </div>
+      <div class="header">
+        <h1>LIGHTNING SQUARE CHESS CLUB</h1>
+      </div>
+    </div>
+    <div class="content-section">
       <div class="wrapper">
-        <div class="logo">
-          <a href="index.html">
-            <img></img>
-            <span>Lightning Square Chess</span>
-          </a>
-        </div>
-        <button onclick="toggleLinks()">
-          <img src="menu.svg"></img>
-        </button>
-        <div class="links" id="links">
-          <a href="index.html">Home</a>
-          <a href="about.html">About Us</a>
-          <div class="sub-links">
-            <span>Tournaments</span>
-            <div class="sub-links-menu">
-              <a href="community.html">Brainpower Community</a>
-              <a href="blitz.html">Brainpower Blitz</a>
-            </div>            
-          </div>
-          <a href="lesson.html">Classes</a>
-          <a href="contact.html">Contact Us</a>  
-        </div>
-      </div>      
-    </div>
-    <div class="header">
-      <h1>LIGHTNING SQUARE CHESS CLUB</h1>
-    </div>
-  </div>
-  <div class="content-section">
-    <div class="wrapper">
-      <div id="about" class="section">
-        <h2>About Us</h2>       
-        <p>Our mission extends beyond the confines of our meetings. By actively promoting the game of chess, we seek to introduce its numerous benefits to a wider audience. The tactical intricacies of chess enhance critical thinking, strategic planning, and problem-solving skills – qualities that are invaluable both on and off the board. Through our passion-driven endeavors, we hope to kindle a flame of fascination for chess, drawing newcomers into the fold and inspiring them to embark on a rewarding journey of growth and intellectual exploration.
-        </p>             
-        <p>Join us at lightning square Chess Club and be a part of an engaging community that celebrates the beauty of chess, fosters meaningful connections, and propels the ancient game into the modern spotlight. Together, let's make every move count – on the board and in life.
-        </p>
-        <h2>Team</h2>
-        <div class="member">
-          <div class="card">
-            <div class="avatar avatar-0">
+        <div id="about" class="section">
+          <h2>About Us</h2>       
+          <p>Our mission extends beyond the confines of our meetings. By actively promoting the game of chess, we seek to introduce its numerous benefits to a wider audience. The tactical intricacies of chess enhance critical thinking, strategic planning, and problem-solving skills – qualities that are invaluable both on and off the board. Through our passion-driven endeavors, we hope to kindle a flame of fascination for chess, drawing newcomers into the fold and inspiring them to embark on a rewarding journey of growth and intellectual exploration.
+          </p>           
+          <h2>Team</h2>
+          <div class="member">
+            <div class="card">
+              <div class="avatar avatar-0">
+              </div>
+              <p>
+                <b>Kally Wen</b><br/>
+                <span>Lynbrook High School</span>
+              </p>
             </div>
-            <p>
-              <b>Kally Wen</b><br/>
-              <span>Lynbrook High School</span>
-            </p>
-          </div>
-          <div class="card">
-            <div class="avatar avatar-1">
+            <div class="card">
+              <div class="avatar avatar-1">
+              </div>
+              <p>
+                <b>Vincent Qin</b><br/>
+                <span>Lynbrook High School</span>
+              </p>
             </div>
-            <p>
-              <b>Vincent Qin</b><br/>
-              <span>Lynbrook High School</span>
-            </p>
+            <div class="card">
+              <div class="avatar avatar-2">
+              </div>
+              <p>
+                <b>Wentao Wu</b><br/>
+                <span>Gunn High School</span>
+              </p>
+            </div>          
           </div>
-          <div class="card">
-            <div class="avatar avatar-2">
-            </div>
-            <p>
-              <b>Wentao Wu</b><br/>
-              <span>Gunn High School</span>
-            </p>
-          </div>          
-        </div>
-        <h2>Our Mission</h2>
-        <p class="centered">
-          Bringing Chess Enthusiasts Together with a Lightning of Passion.
-        </p>        
+          <h2>Join Us</h2>  
+          <p>Join us at lightning square Chess Club and be a part of an engaging community that celebrates the beauty of chess, fosters meaningful connections, and propels the ancient game into the modern spotlight. Together, let's make every move count – on the board and in life.
+          </p>
+          
+                  
+      </div>
     </div>
-  </div>
-  <script src="main.js"></script>
-</body>
+    <div class="footer">
+      <p class="centered">
+        <b>Our Mission: </b>Bringing Chess Enthusiasts Together with a Lightning of Passion.
+      </p>
+      <p><b>Follow us on: </b><a href=""><img src="https://i.ibb.co/1byDXhy/facebook.png" /></a></p>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
