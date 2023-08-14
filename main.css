@@ -297,3 +297,66 @@ a {
 .bold {
   font-weight: bold;
 }
+
+.pic-1 {
+  margin: 0 auto 40px;
+  max-width: 400px;
+  padding-bottom: 50%;
+  background: url(https://i.ibb.co/dkh04yB/Wechat-IMG28162.jpg) center no-repeat;
+  background-size: cover;
+  border-radius: 8px;
+}
+
+.pic-2 {
+  background: url(https://i.ibb.co/YBcwDkv/Wechat-IMG28165.jpg) center no-repeat;
+  background-size: cover;
+  border-radius: 8px;
+  padding-bottom: 33%;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+.member {
+  display: flex;
+}
+
+.card {
+  width: 33%;
+  text-align: center;
+  margin: 10px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 30px rgba(0,0,0,.3);
+}
+
+.card p {
+  padding: 10px 0;
+  font-weight: normal;
+  line-height: 32px;
+}
+
+.avatar {
+  width: 100%;
+  padding-bottom: 120%;
+}
+
+.avatar-1 {
+  background: url(https://i.ibb.co/jrph2FW/Wechat-IMG28213.jpg) 50% 20% no-repeat;
+  background-size: 100%
+}
+
+.avatar-2 {
+  background: url(https://i.ibb.co/phRHMfw/Wechat-IMG28212.jpg) 50% 48% no-repeat;
+  background-size: 100%
+}
+
+@media (max-width:640px) {
+  .member {
+    display: block;
+  }
+  .card {
+    max-width: 400px;
+    width: 100%;
+    margin: 20px auto;    
+  }
+}
