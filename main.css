@@ -2,8 +2,8 @@ html, body {
   margin: 0;
   padding: 0;
   background: white;
-  color: black;
-  font-family: Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+  color: #000000;
+  font-family: "SF Pro Text","SF Pro Icons",Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
 a {
@@ -76,11 +76,13 @@ a {
   font-weight: 900;
   text-align: center;
   padding: 20px 0;
+  color:#003F6C;
 }
 .content-section p {
   font-size: 20px;
   font-weight: 400;
   padding-bottom: 20px;
+  line-height:1.33;
 }
 
 .links {
@@ -268,6 +270,7 @@ a {
   color: black;
   padding: 4px 0;
   margin: 0;
+  white-space: nowrap;
 }
 
 .table a {
@@ -301,8 +304,8 @@ a {
 
 .pic-1 {
   margin: 0 auto 40px;
-  max-width: 500px;
-  padding-bottom: 50%;
+  width: 500px;
+  height: 250px;
   background: url(https://i.ibb.co/dkh04yB/Wechat-IMG28162.jpg) center no-repeat;
   background-size: cover;
   border-radius: 8px;
@@ -312,8 +315,8 @@ a {
   background: url(https://i.ibb.co/YBcwDkv/Wechat-IMG28165.jpg) center no-repeat;
   background-size: cover;
   border-radius: 8px;
-  padding-bottom: 33%;
-  max-width: 500px;
+  width: 500px;
+  height: 250px;
   margin: 0 auto 40px;
 }
 
@@ -360,7 +363,9 @@ a {
     width: 100%;
     margin: 20px auto;    
   }
-  .pic-2 {
+  .pic-2, .pic-1 {
+    width: 100%;
+    height: auto;
     padding-bottom: 50%;
   }
 }
