@@ -51,7 +51,7 @@ a {
 
 .header-filter {
   background-color: rgba(0,0,0,.2);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
   position: absolute;
   top: 0;
   left: 0;
@@ -379,7 +379,7 @@ a {
   text-align: center;
   border-top: 1px solid #eee;
   max-width: 1200px;
-  margin: 40px auto 0;]
+  margin: 40px auto 0;
   box-sizing: border-box;
 }
 
@@ -392,5 +392,21 @@ a {
   vertical-align: middle;
   width: 24px;
   height: 24px;
+}
+
+.dt {
+  width: 443px;
+}
+
+.loc {
+  width: 328px;
+}
+
+.lev {
+  width: 270px;
+}
+
+.reg {
+  width: 120px;
 }
 
