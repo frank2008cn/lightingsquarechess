@@ -348,14 +348,19 @@ a {
   padding-bottom: 120%;
 }
 
+.avatar-0 {
+  background: url(https://i.ibb.co/QfSqTFx/283971693375044-pic.jpg) 50% 20% no-repeat;
+  background-size: 100%;
+}
+
 .avatar-1 {
   background: url(https://i.ibb.co/jrph2FW/Wechat-IMG28213.jpg) 50% 20% no-repeat;
-  background-size: 100%
+  background-size: 100%;
 }
 
 .avatar-2 {
   background: url(https://i.ibb.co/phRHMfw/Wechat-IMG28212.jpg) 50% 48% no-repeat;
-  background-size: 100%
+  background-size: 100%;
 }
 
 @media (max-width:640px) {
