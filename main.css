@@ -61,7 +61,7 @@ a {
 }
 
 .header-background {
-  height: 500px;
+  height: 400px;
   background: url(https://i.ibb.co/HYPJZt2/background.jpg) #333 center no-repeat;
   background-size: cover;
   position: relative;
@@ -153,7 +153,7 @@ a {
   padding: 0;
   position: absolute;
   width: 100%;
-  top: 260px;
+  top: 210px;
 }
 
 .calendar {
