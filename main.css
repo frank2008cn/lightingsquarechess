@@ -85,6 +85,22 @@ a {
   line-height:1.33;
 }
 
+blockquote {
+  background: #f3f3f3;
+  margin: 0;
+  padding: 40px;
+  font-size: 22px;
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  margin-top: 8 0px;
+}
+blockquote .author {
+  text-align: right;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
 .links {
   float: right;
 }
@@ -310,13 +326,22 @@ a {
   margin: 0 auto 40px;
   width: 500px;
   height: 250px;
-  background: url(https://i.ibb.co/dkh04yB/Wechat-IMG28162.jpg) center no-repeat;
+  background: url(https://i.ibb.co/qxPc3SG/0d4d204cc1a45454498b448d7adcdcd5.jpg) center no-repeat;
   background-size: cover;
   border-radius: 8px;
 }
 
 .pic-2 {
-  background: url(https://i.ibb.co/YBcwDkv/Wechat-IMG28165.jpg) center no-repeat;
+  background: url(https://i.ibb.co/cQn2HMN/a9e225d8386d6ba887d760a2a1282c5b-2.jpg) center no-repeat;
+  background-size: cover;
+  border-radius: 8px;
+  width: 500px;
+  height: 250px;
+  margin: 0 auto 40px;
+}
+
+.pic-3 {
+  background: url(https://i.ibb.co/ypmhHXj/569dce188c27e1f11e3fe094824f7ec0.jpg) center no-repeat;
   background-size: cover;
   border-radius: 8px;
   width: 500px;
@@ -361,6 +386,24 @@ a {
 .avatar-2 {
   background: url(https://i.ibb.co/phRHMfw/Wechat-IMG28212.jpg) 50% 48% no-repeat;
   background-size: 100%;
+}
+
+.avatar-3 {
+  background: url(https://i.ibb.co/NL2kfKY/1214eb735860b5d5487fcd747bd14a49.jpg) 0 0 no-repeat;
+  background-size: 110%;
+  padding-bottom: 140%;
+}
+
+.avatar-4 {
+  background: url(https://i.ibb.co/smw8QnT/d5faab80fb76c38dea1ccb542c1113e0.jpg) 50% 0% no-repeat;
+  background-size: 100%;
+  padding-bottom: 140%;
+}
+
+.avatar-5 {
+  background: url(https://i.ibb.co/KqmrdFn/a179ae934b6ae4b6b5b13b7684819b52.jpg) 50% 30%  no-repeat;
+  background-size: 120%;
+  padding-bottom: 140%;
 }
 
 @media (max-width:640px) {
