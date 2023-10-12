@@ -42,14 +42,14 @@ function toggleLinks() {
       html += '</div>';
       $("#dots").html(html);
 
-      timer = setTimeout(next, 5000);
+      next();
   }
 
   function next() {
       timer != null && clearTimeout(timer);
       timer = setTimeout(function() {
           slideTo(current == last ? 0 : current + 1);
-      }, 5000);        
+      }, 3000);        
   }
 
   window.onresize = function() {
