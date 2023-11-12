@@ -13,8 +13,17 @@ function toggleLinks() {
     "https://i.ibb.co/5Fq1WWK/IMG-9375.jpg",
     "https://i.ibb.co/1Jxs6Dy/IMG-9377.jpg",
     "https://i.ibb.co/2P6LBCf/IMG-9378.jpg",
-    "https://i.ibb.co/Bc4Cbny/IMG-9383.jpg"
+    "https://i.ibb.co/Bc4Cbny/IMG-9383.jpg",
+    "https://i.ibb.co/gVPrfPC/IMG-9627.jpg",
+    "https://i.ibb.co/vmH5kyw/IMG-9916.jpg",
+    "https://i.ibb.co/Sytf8mJ/IMG-9624.jpg",
+    "https://i.ibb.co/7QWbbX7/IMG-8740.jpg",
+    "https://i.ibb.co/8Xzgq3Y/IMG-9633.jpg"
   ];
+
+
+
+
 
   var current = 0;
   var timer = null;
