@@ -164,10 +164,17 @@ blockquote .author {
   font-size: 20px;
   font-weight: 700;
   float: left;
+  line-height: 80px;
 }
 
 .logo a {
   color: white;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
 }
 
 .header h1 {
