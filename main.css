@@ -465,6 +465,16 @@ blockquote .author {
   border-radius: 8px;
 }
 
+.pic-00 {  
+  margin: 0 auto 40px;
+  width: 800px;
+  height: 400px;
+  background: url(https://i.ibb.co/p2vm02P/IMG-0441.jpg) center no-repeat;
+  background-size: cover;
+  border-radius: 8px;
+}
+
+
 .pic-1 {
   margin: 0 auto 40px;
   width: 800px;
