@@ -1,14 +1,15 @@
-function toggleLinks() {
+ function toggleLinks() {
   var links = document.getElementById("links");
   links.style.display = links.style.display != "block" ? "block" : "none";
 }
+
 
 (function() {
   // image slideshow
   var slides = [    
     "https://i.ibb.co/bghCVL3/IMG-9373.jpg",
-    "https://i.ibb.co/cvSbJWw/IMG-9368.jpg",   
-    "https://i.ibb.co/HTFH29C/IMG-9371.jpg",     
+    "https://i.ibb.co/cvSbJWw/IMG-9368.jpg",  
+    "https://i.ibb.co/HTFH29C/IMG-9371.jpg",    
     "https://i.ibb.co/hZFs9jz/IMG-9374.jpg",
     "https://i.ibb.co/5Fq1WWK/IMG-9375.jpg",
     "https://i.ibb.co/2P6LBCf/IMG-9378.jpg",
@@ -26,23 +27,30 @@ function toggleLinks() {
 
 
 
+
+
+
+
+
   var current = 0;
   var timer = null;
   var width = $("#slideshow").width() + 16
   var count = slides.length;
   var last = count - 1;
 
+
   window.createSlides = function() {
       var html = "<div id='slide-images'>";        
       for (var i = 0; i < count; i++) {
           var x = i == count - 1 ? -width: width * i;
           var cls = i == 0 ? " active" : "";
-          html += '<div style="transform:translate3d(' + x + 'px, 0, 0)" id="slide-' + i + '" class="slide' 
-              + cls + '" onclick="slideTo(' + i + ')"><div class="slide-image" style="background-image:url(' + slides[i] 
+          html += '<div style="transform:translate3d(' + x + 'px, 0, 0)" id="slide-' + i + '" class="slide'
+              + cls + '" onclick="slideTo(' + i + ')"><div class="slide-image" style="background-image:url(' + slides[i]
               + ')"></div></div>';
       }      
       html += '</div>';
       $("#slideshow").html(html);
+
 
       html = '<div class="dots">';
       for (var i = 0; i < count; i++) {
@@ -52,8 +60,10 @@ function toggleLinks() {
       html += '</div>';
       $("#dots").html(html);
 
+
       next();
   }
+
 
   function next() {
       timer != null && clearTimeout(timer);
@@ -61,6 +71,7 @@ function toggleLinks() {
           slideTo(current == last ? 0 : current + 1);
       }, 3000);        
   }
+
 
   window.onresize = function() {
       setTimeout(function() {
@@ -72,16 +83,20 @@ function toggleLinks() {
       }, 0);        
   };
 
+
   window.slideTo = function(index) {
       if (index == current) {
           return;
       }
 
+
       $(".slide").removeClass("active");
       $("#slide-" + index).addClass("active");
 
+
       $(".dot").removeClass("active");
       $("#dot-" + index).addClass("active");
+
 
       if (index == 0 && current == last) {
           $("#slide-images").animate({transform: "translate3d(-" + (last + 1) * width + "px, 0, 0)"}, 300);
@@ -90,6 +105,7 @@ function toggleLinks() {
       } else {
           $("#slide-images").animate({transform: "translate3d(-" + index * width + "px, 0, 0)"}, 300);
       }
+
 
       setTimeout(function() {
           if (index == 0) {
@@ -100,6 +116,7 @@ function toggleLinks() {
               $("#slide-images").animate({transform: "translate3d(-" + index * width + "px, 0, 0)"}, 0);
           }
 
+
           if (index == last) {
               $("#slide-0").animate({transform: "translate3d(" + (last + 1) * width + "px, 0, 0)"}, 0);
           } else {
@@ -107,9 +124,11 @@ function toggleLinks() {
           }
       }, 300);
 
+
       current = index;        
       next();        
   };
+
 
   window.toggleLinks = function() {
       var links = document.getElementById("links");

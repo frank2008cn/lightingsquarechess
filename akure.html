@@ -1,0 +1,534 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="main.css?v=16" />
+    <!-- jQuery optional (kept for other parts of your site) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+      /* ===== scoped slideshow & layout styles ===== */
+
+      .wrapper { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+      h2.section-title { font-size: 1.8rem; margin: 18px 0; text-align: left; }
+
+      /* Ensure subtitle above the grid so slideshow top aligns under subtitle */
+      .school-wrap { margin-bottom: 36px; }
+      .school-wrap > h3 {
+        margin: 6px 0 10px 0;
+        font-size: 1.25rem;
+      }
+
+      /* school section grid: left text + right slideshow */
+      .school-section {
+        display: grid;
+        grid-template-columns: 1fr 50%;
+        gap: 20px;
+        align-items: start;
+      }
+
+      /* left column (intro/text) */
+      .school-text {
+        padding-right: 10px;
+      }
+
+      .school-text p.intro {
+        margin-bottom: 12px;
+      }
+
+      /* quote blocks below grid (full width) */
+      .school-quotes {
+        margin-top: 14px;
+        clear: both;
+      }
+      .school-quotes .quote-block {
+        background: #f9f9f9;
+        border-left: 6px solid #555;
+        padding: 14px;
+        margin-bottom: 12px;
+        font-style: italic;
+        line-height: 1.4;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .school-quotes .quote-author {
+        margin-top: 8px;
+        text-align: right;
+        font-weight: bold;
+        font-style: normal;
+      }
+
+      /* right column slideshow (box) */
+      .school-slideshow {
+        position: relative;
+        width: 100%;
+        height: 320px;
+        border-radius: 6px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        background: #eaeaea;
+        margin-top: 0; /* ensures top aligns under subtitle */
+      }
+      .school-slideshow .slide {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transform: scale(1.02);
+        transition: opacity 500ms cubic-bezier(.2,.8,.2,1), transform 500ms cubic-bezier(.2,.8,.2,1);
+        pointer-events: none;
+        z-index: 1;
+      }
+      .school-slideshow .slide.active {
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: auto;
+        z-index: 2;
+      }
+
+      .school-dots {
+        text-align: center;
+        margin-top: 10px;
+      }
+      .school-dots .dot {
+        display: inline-block;
+        width: 11px;
+        height: 11px;
+        margin: 0 5px;
+        background: #bbb;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: transform 160ms ease, background-color 160ms ease;
+      }
+      .school-dots .dot.active { background: #717171; transform: scale(1.15); }
+
+      /* Tournament grid: split 50/50 with slideshow left, quotes right */
+      .tournament-wrap { margin-top: 30px; margin-bottom: 40px; }
+      .tournament-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        align-items: start;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .tournament-slideshow {
+        width: 100%;
+        height: 360px;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        background: #111;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      }
+      .tournament-slideshow .slide {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 700ms ease;
+      }
+      .tournament-slideshow .slide.active { opacity: 1; z-index: 2; }
+
+      .tournament-dots {
+        text-align: center;
+        margin-top: 8px;
+      }
+      .tournament-dots .dot {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        margin: 0 6px;
+        background: rgba(255,255,255,0.6);
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .tournament-dots .dot.active { background: #fff; transform: scale(1.05); }
+
+      .tournament-quotes {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .tournament-quotes .quote-block {
+        background: #f9f9f9;
+        border-left: 6px solid #333;
+        padding: 14px;
+        font-style: italic;
+        line-height: 1.4;
+      }
+      .tournament-quotes .quote-author {
+        margin-top: 8px;
+        text-align: right;
+        font-weight: bold;
+        font-style: normal;
+      }
+
+      /* Tournament blurb (non-quote) reused */
+      .tournament-blurb {
+        max-width: 1100px;
+        margin: 16px auto 8px;
+        padding: 12px 16px;
+        background: #fff;
+        border-left: 6px solid #333;
+        color: #222;
+        line-height: 1.5;
+      }
+
+      /* responsive: collapse into single column */
+      @media screen and (max-width: 900px) {
+        .school-section { grid-template-columns: 1fr; }
+        .school-slideshow { height: 260px; margin-top: 12px; }
+        .school-wrap > h3 { margin-left: 4px; }
+        .tournament-grid { grid-template-columns: 1fr; }
+        .tournament-slideshow { height: 260px; }
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="header-section header-background" id="home">
+      <div class="header-filter"></div>
+      <div class="navigation">
+        <div class="wrapper">
+          <div class="logo">
+            <a href="index.html"><img src="https://i.ibb.co/Ld6nbrV/logo.png" alt="Logo"/><span></span></a>
+          </div>
+          <button onclick="toggleLinks()"><img src="menu.svg" alt="Menu"/></button>
+          <div class="links" id="links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <div class="sub-links">
+              <span>Tournaments</span>
+              <div class="sub-links-menu">
+                <a href="blitz.html">Quads Tournaments</a>
+                <a href="online.html">Online Tournaments</a>
+              </div>
+            </div>
+            <a href="lesson.html">Bay Area Program</a>
+            <a href="national.html">National Program</a>
+            <div class="sub-links">
+              <a href="africa.html">International Program</a>
+              <div class="sub-links-menu">
+                <a href="akure.html"> Akure Schools</a>
+                <a href="ansaruddeen.html">Ansar-ud-deen College</a>
+                <a href="matheku.html">Matheku Secondary School</a>
+                <a href="sweetwaters.html">Sweetwaters Girls School</a>
+              </div>
+            </div>
+            <a href="contact.html">Contact Us</a>
+          </div>
+        </div>
+      </div>
+      <div class="header"><h1>LIGHTNING SQUARE CHESS CLUB</h1></div>
+    </div>
+
+    <div class="content-section">
+      <div class="wrapper">
+        <!-- Page main title and intro -->
+        <h2 class="section-title">Akure Schools</h2>
+
+        <p class="intro">
+         In Nigeria, chess has been steadily gaining popularity among students, but many schools struggle to support the game due to limited equipment, a shortage of trained coaches, and minimal institutional backing. Coach Vincent worked closely with Mr. Dada Philip Olamide, our Regional Coordinator and a dedicated advocate for educational equity and youth empowerment, who recognized this gap. At the Federal University of Technology, Akure (FUTA), Great Landmark College, and Christ Model Comprehensive High School, student interest was high, but opportunities for regular practice and competitions were scarce. Seeing this need, Coach Vincent found a natural alignment with our Club Bootstrap Program to bring structured chess activities and resources to the schools.
+        </p>
+
+<blockquote>
+"The Lightning Square Club Bootstrap program provides a holistic chess education experience for resource-limited regions. It avails students the opportunity of learning the timeless game from well-experienced coaches, delivered online with adequate local support for participants. I highly recommend the program to every chess club that wants to put the chess skills of their members on steroids. The lessons are delivered seamlessly online and adequate support is provided for all participants for the entire duration of the program.<br><br>
+Coach Vincent's methods are gentle and persuasive. He pushes the students to their best and gives them a lot of examples. The best way to learn chess, in my own opinion."<br><br>
+<footer>— Mr. Dada Philip Olamide, Regional Coordinator</footer>
+</blockquote>
+
+        </blockquote>
+        <!-- Great Landmark (subtitle above grid so slideshow aligns under it) -->
+        <section id="great-landmark" class="school-wrap">
+          <h3>Great Landmark</h3>
+          <div class="school-section">
+            <div class="school-text">
+              <p class="intro">At Great Landmark College, a private secondary school in Ijoka, Akure, Coach Vincent worked with 10 students, introducing them to chess basics and strategic play. With donated chess sets, students practiced consistently under his guidance, developing focus and analytical skills. Coach Vincent’s lively sessions kept students engaged and encouraged creative problem-solving.</p>
+            </div>
+
+            <div>
+              <div id="slideshow-great" class="school-slideshow" aria-hidden="false"></div>
+              <div id="dots-great" class="school-dots" role="tablist" aria-label="Great Landmark slides"></div>
+            </div>
+          </div>
+
+          <!-- full-width quotes under both intro and slideshow -->
+          <div class="school-quotes" aria-live="polite">
+            <div class="quote-block">
+              "I am glad I participated in the Akure Chess Bootstrap program. Vincent did so well in the training. Looking forward to becoming a chess grandmaster someday."
+              <div class="quote-author">— Ayeni Joseph Ife Oluwa</div>
+            </div>
+
+            <div class="quote-block">
+              "I like the way the classes were held. I particularly am excited doing the assignments and chess puzzles."
+              <div class="quote-author">— Akintade Oluwatoyosi Yetunde</div>
+            </div>
+
+            <div class="quote-block">
+              "I thank The Lightening Square Chess club for their support."
+              <div class="quote-author">— Olarewaju Samuel</div>
+            </div>
+
+            <div class="quote-block">
+              "I enjoyed how the sessions were delivered. It made chess really simple. Hope it continues next session."
+              <div class="quote-author">— Afolabi Oluwadarasimi</div>
+            </div>
+
+            <div class="quote-block">
+              "Thank you Vincent! We are proud of you!"
+              <div class="quote-author">— Adeniyi Deborah</div>
+            </div>
+
+            <div class="quote-block">
+              "I love Chess! I am happy I participated in the program!"
+              <div class="quote-author">— Ajiboye Mayowa</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Christ Model -->
+        <section id="christ-model" class="school-wrap">
+          <h3>Christ Model</h3>
+          <div class="school-section">
+            <div class="school-text">
+              <p class="intro">At Christ Model Comprehensive High School, a private school in Akure, Coach Vincent coached 20 students through both foundational and advanced chess techniques. Using donated chess sets, he guided students in practicing regularly and sharpening their strategic thinking. His interactive approach made lessons fun while enhancing critical thinking and decision-making skills.</p>
+            </div>
+
+            <div>
+              <div id="slideshow-christ" class="school-slideshow" aria-hidden="false"></div>
+              <div id="dots-christ" class="school-dots" role="tablist" aria-label="Christ Model slides"></div>
+            </div>
+          </div>
+
+          <!-- full-width quotes under both intro and slideshow -->
+
+
+          <div class="school-quotes" aria-live="polite">
+            <div class="quote-block">
+              "Thank you so much, Vincent. You are blessed!"
+              <div class="quote-author">— Adetogo Iyanu</div>
+            </div>
+            <div class="quote-block">
+              "Thank you for the fantastic opportunity."
+              <div class="quote-author">— Adeyanju Precious</div>
+            </div>
+
+            <div class="quote-block">
+              "I love the program."
+              <div class="quote-author">— Olashinde Favour</div>
+            </div>
+
+            <div class="quote-block">
+              "I learnt a lot. I will keep improving my chess skills."
+              <div class="quote-author">— Adebiyi Marvelous</div>
+            </div>
+
+            <div class="quote-block">
+              "I will become a grandmaster someday!"
+              <div class="quote-author">— Ibitoye Jacob</div>
+            </div>
+
+            <div class="quote-block">
+              "I feel like a chess champion already. The bootstrap program opened my eyes to a lot of tactics in chess!"
+              <div class="quote-author">— Okoro Wisdom</div>
+            </div>
+
+            <div class="quote-block">
+              "I hope the program will continue when we resume by September!"
+              <div class="quote-author">— Ariyo Maxwell</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FUTA -->
+        <section id="futa" class="school-wrap">
+          <h3>Federal University of Technology, Akure (FUTA)</h3>
+          <div class="school-section">
+            <div class="school-text">
+              <p class="intro">At FUTA, a technology-focused university in the Ondo State capital, Coach Vincent guided 10 students through chess fundamentals and advanced strategies. Using a chess clock and donated sets, Coach Vincent helped students practice regularly and sharpen their skills. His interactive sessions made learning fun while building critical thinking and decision-making abilities.</p>
+            </div>
+
+            <div>
+              <div id="slideshow-futa" class="school-slideshow" aria-hidden="false"></div>
+              <div id="dots-futa" class="school-dots" role="tablist" aria-label="FUTA slides"></div>
+            </div>
+          </div>
+
+          <!-- full-width quotes under both intro and slideshow -->
+          <div class="school-quotes" aria-live="polite">
+            <div class="quote-block">
+              "Well detailed and comprehensive Chess program. I learned a lot."
+              <div class="quote-author">— Adegoke Adeniyi</div>
+            </div>
+
+            <div class="quote-block">
+              "The lessons were delivered very effectively. Kudos to Vincent and his team!"
+              <div class="quote-author">— Godwin Olasehinde</div>
+            </div>
+
+            <div class="quote-block">
+              "Quite an experience! Everyone interested in Chess should begin their lessons with this bootstrap program. It is highly recommended!"
+              <div class="quote-author">— Unife Eruoghene</div>
+            </div>
+
+            <div class="quote-block">
+              "Thanks a lot to the organizers of this program. It is impactful."
+              <div class="quote-author">— Alexander King</div>
+            </div>
+
+            <div class="quote-block">
+              "Chess teaches us so much and the Lightning Square Chess team makes it quite easier!"
+              <div class="quote-author">— Popoola Philip</div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- Tournament: 50/50 split with images left and quotes right -->
+        <div class="tournament-wrap">
+          <h2 class="section-title" style="margin-top: 8px;">Tournament</h2>
+          <div class="tournament-grid" aria-live="polite">
+            <div>
+              <div id="tournament-slideshow" class="tournament-slideshow" aria-hidden="false"></div>
+              <div id="tournament-dots" class="tournament-dots" role="tablist" aria-label="Tournament slides"></div>
+            </div>
+
+            <div class="tournament-quotes" aria-live="polite">
+              <div class="quote-block">
+                "...I also want to bring to your notice, the promise we made earlier to keep the chess sets we received in the community. Last weekend, we were able to reintroduce a monthly Chess tournament known as Chess Heights in our city, since 2016. The tournament unites chess players from different parts of the state, competing in exciting tournament rounds, and the event happens simultaneously in different Nigerian states at the same time. The chess sets graciously sent by your organization was used for Akure Chess Heights Monthly Tournament..."
+                <div class="quote-author">— Mr. Dada Philip Olamide</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div> <!-- end wrapper -->
+    </div>
+
+    <div class="footer">
+      <div class="wrapper">
+        <p class="centered"><b>Our Mission:</b> Bridge geographic and economic disparities in chess education and create opportunities for children to learn and grow through chess.</p>
+      </div>
+    </div>
+
+    <!-- multi-slideshow script -->
+    <script>
+      // Replace these arrays with the images you'd like for each section.
+      const slidesGreat = [
+        "https://i.ibb.co/3y7k4FTW/1000102459.jpg",
+        "https://i.ibb.co/23Vk8MbB/Screenshot-20250323-191157-1.jpg",
+        "https://i.ibb.co/9mLRL6GB/Screenshot-20250323-191215-1-1.jpg",
+        "https://i.ibb.co/qYfDs6Fm/Screenshot-20250323-191237-1.jpg",
+        "https://i.ibb.co/fYGC4zkk/IMG-20250206-WA0035.jpg",
+        "https://i.ibb.co/rKDyLnvv/IMG-20250227-082832-013-1.jpg",
+        "https://i.ibb.co/JRgDqrGG/IMG-20250213-085828-276-1.jpg",
+        "https://i.ibb.co/GvDSSYBQ/1000145321-1.jpg",
+        "https://i.ibb.co/PGDKcqVj/1000102468.jpg",
+        "https://i.ibb.co/3yJMdn5W/1000102456-1.jpg"
+      ];
+      const slidesChrist = [
+        "https://i.ibb.co/0R4J1dG9/Screenshot-20250324-090725.jpg",
+        "https://i.ibb.co/BHd1sN5W/IMG-20250227-WA0043.jpg",
+        "https://i.ibb.co/9kwjn8qt/IMG-20250214-WA0016.jpg",
+        "https://i.ibb.co/TG1Dt35/IMG-20250214-WA0015-1.jpg",
+        "https://i.ibb.co/TqBmC9V2/IMG-20250206-094919-686.jpg",
+        "https://i.ibb.co/MkyprMtK/IMG-20250206-094912-548-1.jpg",
+        "https://i.ibb.co/sd6T6kxp/1000108838.jpg"
+
+      ];
+      const slidesFuta = [
+        "https://i.ibb.co/PzswmVvs/IMG-20250227-WA0028-1.jpg",
+        "https://i.ibb.co/WpFkjmRG/IMG-20250227-WA0027.jpg",
+        "https://i.ibb.co/rR0C51Pn/IMG-20250206-WA0021.jpg"
+
+      ];
+      // tournament images (previously banner)
+      const slidesTournament = [
+        "https://i.ibb.co/yFydVKjt/headline.png",
+        "https://i.ibb.co/1Jv9pLF9/IMG-20250719-WA0128-1.jpg",
+        "https://i.ibb.co/kgqrX0Lm/IMG-20250719-WA0119.jpg",
+        "https://i.ibb.co/HDh7CR24/IMG-20250719-WA0111-1.jpg",
+        "https://i.ibb.co/B5jV7M3s/IMG-20250719-WA0107.jpg",
+        "https://i.ibb.co/N2sMJh7f/IMG-20250719-WA0089-1.jpg",
+        "https://i.ibb.co/4n6wB4Q2/IMG-20250719-WA0073.jpg"
+      ];
+
+      // generic slideshow initializer
+      function initSlideshow(containerId, dotsId, images, autoInterval = 3500) {
+        const container = document.getElementById(containerId);
+        const dots = document.getElementById(dotsId);
+        if (!container) return null;
+        container.innerHTML = '';
+        if (dots) dots.innerHTML = '';
+
+        let current = 0;
+        let timer = null;
+
+        images.forEach((src, i) => {
+          const div = document.createElement('div');
+          div.className = 'slide' + (i === 0 ? ' active' : '');
+          div.style.backgroundImage = `url(${src})`;
+          container.appendChild(div);
+
+          if (dots) {
+            const dot = document.createElement('span');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.onclick = () => { show(i); restart(); };
+            dots.appendChild(dot);
+          }
+        });
+
+        const slidesEls = container.querySelectorAll('.slide');
+        const dotsEls = dots ? dots.querySelectorAll('.dot') : [];
+
+        function show(index) {
+          slidesEls.forEach((s, idx) => s.classList.toggle('active', idx === index));
+          dotsEls.forEach((d, idx) => d.classList.toggle('active', idx === index));
+          current = index;
+        }
+
+        function next() {
+          current = (current + 1) % images.length;
+          show(current);
+        }
+
+        function start() {
+          if (timer) clearInterval(timer);
+          timer = setInterval(next, autoInterval);
+        }
+        function restart() { start(); }
+
+        // preload first image and then start
+        const img = new Image();
+        img.onload = start;
+        img.onerror = start;
+        img.src = images[0];
+
+        return { show, start, restart };
+      }
+
+      // init all slideshows on DOM ready
+      document.addEventListener('DOMContentLoaded', () => {
+        initSlideshow('slideshow-great', 'dots-great', slidesGreat, 3000);
+        initSlideshow('slideshow-christ', 'dots-christ', slidesChrist, 3200);
+        initSlideshow('slideshow-futa', 'dots-futa', slidesFuta, 3000);
+        initSlideshow('tournament-slideshow', 'tournament-dots', slidesTournament, 4200);
+      });
+
+      function toggleLinks() {
+        const links = document.getElementById('links');
+        links.style.display = links.style.display !== 'block' ? 'block' : 'none';
+      }
+    </script>
+  </body>
+</html>
