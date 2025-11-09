@@ -17,6 +17,7 @@ a {
   overflow: hidden;
 }
 
+
 .overflow-hidden h4 {
   font-size: 30px;
   margin: 80px 0 20px;
@@ -835,8 +836,44 @@ blockquote .author {
   margin: 0 auto 40px;
 }
 
+.pic-25 {
+  background: url(https://i.ibb.co/yFh8LV2X/ff5a1f55-dc98-42ea-a767-411de95bfc29.jpg) no-repeat;
+  background-size: cover;
+  border-radius: 8px;
+  width: 550px;
+  height: 320px;
+  margin: 0 auto 40px;
+}
 
+.pic-26 {
+  background: url(https://i.ibb.co/3ytHqC1p/9a2ecd2b-361b-4f97-8f13-bc5afb72681c.jpg) no-repeat;
+  float: left;
+  background-size: cover;
+  border-radius: 8px;
+  width: 330px;
+  height: 500px;
+  margin: 0 auto 40px;
+}
 
+.pic-27 {
+  background: url(https://i.ibb.co/39swSgJZ/febfc31c-8b02-4bbe-a185-099f31b0b5ad.jpg) no-repeat;
+  float: center;
+  background-size: cover;
+  border-radius: 8px;
+  width: 330px;
+  height: 500px;
+  margin: 0 auto 40px;
+}
+
+.pic-28 {
+  background: url(https://i.ibb.co/jPHRfK7y/914735a3-9f08-4011-9bd7-6003db89fb73.jpg) no-repeat;
+  float: right;
+  background-size: cover;
+  border-radius: 8px;
+  width: 330px;
+  height: 500px;
+  margin: 0 auto 40px;
+}
 
 .member {
   display: flex;
