@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Lightning Square Chess Club</title> 
+    <link rel="stylesheet" type="text/css" href="main.css?v=16" />
+    <!-- jQuery optional (kept for other parts of your site) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+      /* ===== scoped slideshow & layout styles ===== */
+
+      .wrapper { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+      h2.section-title { font-size: 1.8rem; margin: 18px 0; text-align: left; }
+
+      /* Ensure subtitle above the grid so slideshow top aligns under subtitle */
+      .school-wrap { margin-bottom: 36px; }
+      .school-wrap > h3 {
+        margin: 6px 0 10px 0;
+        font-size: 1.25rem;
+      }
+
+      /* school section grid: left text + right slideshow */
+      .school-section {
+        display: grid;
+        grid-template-columns: 1fr 50%;
+        gap: 20px;
+        align-items: start;
+      }
+
+      /* left column (intro/text) */
+      .school-text {
+        padding-right: 10px;
+      }
+
+      .school-text p.intro {
+        margin-bottom: 12px;
+      }
+
+      /* quote blocks below grid (full width) */
+      .school-quotes {
+        margin-top: 14px;
+        clear: both;
+      }
+      .school-quotes .quote-block {
+        background: #f9f9f9;
+        border-left: 6px solid #555;
+        padding: 14px;
+        margin-bottom: 12px;
+        font-style: italic;
+        line-height: 1.4;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .school-quotes .quote-author {
+        margin-top: 8px;
+        text-align: right;
+        font-weight: bold;
+        font-style: normal;
+      }
+
+      /* right column slideshow (box) */
+      .school-slideshow {
+        position: relative;
+        width: 100%;
+        height: 320px;
+        border-radius: 6px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        background: #eaeaea;
+        margin-top: 0; /* ensures top aligns under subtitle */
+      }
+      .school-slideshow .slide {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transform: scale(1.02);
+        transition: opacity 500ms cubic-bezier(.2,.8,.2,1), transform 500ms cubic-bezier(.2,.8,.2,1);
+        pointer-events: none;
+        z-index: 1;
+      }
+      .school-slideshow .slide.active {
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: auto;
+        z-index: 2;
+      }
+
+      .school-dots {
+        text-align: center;
+        margin-top: 10px;
+      }
+      .school-dots .dot {
+        display: inline-block;
+        width: 11px;
+        height: 11px;
+        margin: 0 5px;
+        background: #bbb;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: transform 160ms ease, background-color 160ms ease;
+      }
+      .school-dots .dot.active { background: #717171; transform: scale(1.15); }
+
+      /* responsive: collapse into single column */
+      @media screen and (max-width: 900px) {
+        .school-section { grid-template-columns: 1fr; }
+        .school-slideshow { height: 260px; margin-top: 12px; }
+        .school-wrap > h3 { margin-left: 4px; }
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="header-section header-background" id="home">
+      <div class="header-filter"></div>
+      <div class="navigation">
+        <div class="wrapper">
+          <div class="logo">
+            <a href="index.html"><img src="https://i.ibb.co/Ld6nbrV/logo.png" alt="Logo"/><span></span></a>
+          </div>
+          <button onclick="toggleLinks()"><img src="menu.svg" alt="Menu"/></button>
+          <div class="links" id="links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <div class="sub-links">
+              <span>Tournaments</span>
+              <div class="sub-links-menu">
+                <a href="blitz.html">Quads Tournaments</a>
+                <a href="online.html">Online Tournaments</a>
+              </div>
+            </div>
+            <a href="lesson.html">Bay Area Program</a>
+            <a href="national.html">National Program</a>
+            <div class="sub-links">
+              <a href="africa.html">International Program</a>
+              <div class="sub-links-menu">
+                <a href="akure.html">Akure - Indomitable Genius Academy</a>
+                <a href="ansaruddeen.html">Ansar-ud-deen College</a>
+                <a href="dzaleka.html">Dzaleka Refugee Camp</a>
+                <a href="matheku.html">Matheku Secondary School</a>
+                <a href="sweetwaters.html">Sweetwaters Girls School</a>
+              </div>
+            </div>
+            <a href="contact.html">Contact Us</a>
+          </div>
+        </div>
+      </div>
+      <div class="header"><h1>LIGHTNING SQUARE CHESS CLUB</h1></div>
+    </div>
+
+    <div class="content-section">
+      <div class="wrapper">
+        <!-- Page main title and intro -->
+        <h2 class="section-title">Indomitable Genius Academy</h2>
+
+        <p class="intro">
+         In Nigeria, chess has been steadily gaining popularity among students, but many schools struggle to support the game due to limited equipment, a shortage of trained coaches, and minimal institutional backing. Coach Vincent worked closely with Mr. Dada Philip Olamide, our Regional Coordinator and a dedicated advocate for educational equity and youth empowerment, who recognized this gap. At Indomitable Genius Academy, a private secondary school located in Ijoka, Akure, Ondo State of Nigeria, student interest was high, but opportunities for regular practice and competitions were scarce. Seeing this need, Coach Vincent found a natural alignment with our Club Bootstrap Program to bring structured chess activities and resources to the school.
+        </p>
+
+        <blockquote>
+        "The Lightning Square Club Bootstrap program provides a holistic chess education experience for resource-limited regions. It avails students the opportunity of learning the timeless game from well-experienced coaches, delivered online with adequate local support for participants. I highly recommend the program to every chess club that wants to put the chess skills of their members on steroids. The lessons are delivered seamlessly online and adequate support is provided for all participants for the entire duration of the program.<br><br>
+        Coach Vincent's methods are gentle and persuasive. He pushes the students to their best and gives them a lot of examples. The best way to learn chess, in my own opinion."<br><br>
+        <footer>— Mr. Dada Philip Olamide, Regional Coordinator</footer>
+        </blockquote>
+
+        <!-- Indomitable Genius Academy -->
+        <section id="indomitable-genius" class="school-wrap">
+          <h3>Indomitable Genius Academy Program</h3>
+          <div class="school-section">
+            <div class="school-text">
+              <p class="intro">At Indomitable Genius Academy (Great Landmark College), a private secondary school in Ijoka, Akure, Coach Vincent worked with dedicated students, introducing them to chess basics and strategic play. With donated chess sets, students practiced consistently under his guidance, developing focus and analytical skills. Coach Vincent's lively sessions kept students engaged and encouraged creative problem-solving, making chess accessible and enjoyable for all participants.</p>
+            </div>
+
+            <div>
+              <div id="slideshow-indomitable" class="school-slideshow" aria-hidden="false"></div>
+              <div id="dots-indomitable" class="school-dots" role="tablist" aria-label="Indomitable Genius Academy slides"></div>
+            </div>
+          </div>
+
+          <!-- full-width quotes under both intro and slideshow -->
+          <div class="school-quotes" aria-live="polite">
+            <div class="quote-block">
+              "I am glad I participated in the Akure Chess Bootstrap program. Vincent did so well in the training. Looking forward to becoming a chess grandmaster someday."
+              <div class="quote-author">— Ayeni Joseph Ife Oluwa</div>
+            </div>
+
+            <div class="quote-block">
+              "I like the way the classes were held. I particularly am excited doing the assignments and chess puzzles."
+              <div class="quote-author">— Akintade Oluwatoyosi Yetunde</div>
+            </div>
+
+            <div class="quote-block">
+              "I thank The Lightning Square Chess club for their support."
+              <div class="quote-author">— Olarewaju Samuel</div>
+            </div>
+
+            <div class="quote-block">
+              "I enjoyed how the sessions were delivered. It made chess really simple. Hope it continues next session."
+              <div class="quote-author">— Afolabi Oluwadarasimi</div>
+            </div>
+
+            <div class="quote-block">
+              "Will there be a continuation? Cos I will surely miss the classes."
+              <div class="quote-author">— Ademola Ayomiposi</div>
+            </div>
+
+            <div class="quote-block">
+              "Thank you Vincent! We are proud of you!"
+              <div class="quote-author">— Adeniyi Deborah</div>
+            </div>
+
+            <div class="quote-block">
+              "I hope I get to go to America someday to play chess."
+              <div class="quote-author">— Kolawole Champion</div>
+            </div>
+
+            <div class="quote-block">
+              "I love Chess! I am happy I participated in the program!"
+              <div class="quote-author">— Ajiboye Mayowa</div>
+            </div>
+
+            <div class="quote-block">
+              "I enjoyed the chess sessions."
+              <div class="quote-author">— Omo-ola Praise</div>
+            </div>
+
+            <div class="quote-block">
+              "I will keep practicing my chess!"
+              <div class="quote-author">— Awetolu Emmanuel</div>
+            </div>
+          </div>
+        </section>
+
+      </div> <!-- end wrapper -->
+    </div>
+
+    <div class="footer">
+      <div class="wrapper">
+        <p class="centered"><b>Our Mission:</b> Bridge geographic and economic disparities in chess education and create opportunities for children to learn and grow through chess.</p>
+      </div>
+    </div>
+
+    <!-- slideshow script -->
+    <script>
+      // Placeholder image URLs - replace these with actual images from Indomitable Genius Academy
+      const slidesIndomitable = [
+        "https://via.placeholder.com/600x400/4CAF50/white?text=Indomitable+Genius+Academy+Photo+1",
+        "https://via.placeholder.com/600x400/2196F3/white?text=Chess+Class+Session+Photo+2",
+        "https://via.placeholder.com/600x400/FF9800/white?text=Students+Playing+Chess+Photo+3",
+        "https://via.placeholder.com/600x400/9C27B0/white?text=Coach+Vincent+Teaching+Photo+4",
+        "https://via.placeholder.com/600x400/F44336/white?text=Chess+Tournament+Photo+5",
+        "https://via.placeholder.com/600x400/795548/white?text=Group+Learning+Photo+6",
+        "https://via.placeholder.com/600x400/607D8B/white?text=Chess+Practice+Photo+7"
+      ];
+
+      // generic slideshow initializer
+      function initSlideshow(containerId, dotsId, images, autoInterval = 3500) {
+        const container = document.getElementById(containerId);
+        const dots = document.getElementById(dotsId);
+        if (!container) return null;
+        container.innerHTML = '';
+        if (dots) dots.innerHTML = '';
+
+        let current = 0;
+        let timer = null;
+
+        images.forEach((src, i) => {
+          const div = document.createElement('div');
+          div.className = 'slide' + (i === 0 ? ' active' : '');
+          div.style.backgroundImage = `url(${src})`;
+          container.appendChild(div);
+
+          if (dots) {
+            const dot = document.createElement('span');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.onclick = () => { show(i); restart(); };
+            dots.appendChild(dot);
+          }
+        });
+
+        const slidesEls = container.querySelectorAll('.slide');
+        const dotsEls = dots ? dots.querySelectorAll('.dot') : [];
+
+        function show(index) {
+          slidesEls.forEach((s, idx) => s.classList.toggle('active', idx === index));
+          dotsEls.forEach((d, idx) => d.classList.toggle('active', idx === index));
+          current = index;
+        }
+
+        function next() {
+          current = (current + 1) % images.length;
+          show(current);
+        }
+
+        function start() {
+          if (timer) clearInterval(timer);
+          timer = setInterval(next, autoInterval);
+        }
+        function restart() { start(); }
+
+        // preload first image and then start
+        const img = new Image();
+        img.onload = start;
+        img.onerror = start;
+        img.src = images[0];
+
+        return { show, start, restart };
+      }
+
+      // init slideshow on DOM ready
+      document.addEventListener('DOMContentLoaded', () => {
+        initSlideshow('slideshow-indomitable', 'dots-indomitable', slidesIndomitable, 3000);
+      });
+
+      function toggleLinks() {
+        const links = document.getElementById('links');
+        links.style.display = links.style.display !== 'block' ? 'block' : 'none';
+      }
+    </script>
+  </body>
+</html>
