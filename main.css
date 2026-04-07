@@ -1959,7 +1959,7 @@ blockquote .author {
 
 
 .avatar-1 {
-  background: url(https://i.ibb.co/MyVf8cx0/IMG-6259.jpg) 60% 50% no-repeat;
+  background: url(https://i.ibb.co/RpT2HbhK/S5002869.jpg) 60% 50% no-repeat;
   background-size: 130%;
 }
 
@@ -2099,6 +2099,41 @@ blockquote .author {
   padding: 8px 0;
   margin: 0;
 }
+
+.card:has(.avatar-0) {
+  transform: scale(0.6);
+  transform-origin: top center;
+  margin-bottom: -100px; /* Compensates for the white space created by scaling */
+}
+.card:has(.avatar-1) {
+  transform: scale(0.6);
+  transform-origin: top center;
+  margin-bottom: -100px; /* Compensates for the white space created by scaling */
+}
+
+.card:has(.avatar-2) {
+  transform: scale(0.6);
+  transform-origin: top center;
+  margin-bottom: -100px; /* Compensates for the white space created by scaling */
+}
+.card:has(.avatar-3) {
+  transform: scale(0.6);
+  transform-origin: top center;
+  margin-bottom: -100px; /* Compensates for the white space created by scaling */
+}
+
+.card:has(.avatar-5) {
+  transform: scale(0.6);
+  transform-origin: top center;
+  margin-bottom: -100px; /* Compensates for the white space created by scaling */
+}
+.card:has(.avatar-4) {
+  transform: scale(0.6);
+  transform-origin: top center;
+  margin-bottom: -100px; /* Compensates for the white space created by scaling */
+}
+
+
 
 
 .footer img {
